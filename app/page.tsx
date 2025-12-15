@@ -6,6 +6,13 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
 export default function PortfolioPage() {
   const [emailCopied, setEmailCopied] = useState(false)
@@ -22,7 +29,14 @@ export default function PortfolioPage() {
   ]
 
   const uiProjects = [
-    { id: 7, title: "Savory: Mobile Menu", tags: ["Mobile App Design", "UX Research"], skillRating: 5, image: "/menu-2.jpg", hoverImage: "/menu-1.jpg" },
+    { 
+      id: 7, 
+      title: "Savory: Mobile Menu", 
+      tags: ["Mobile App Design", "UX Research"], 
+      skillRating: 5, 
+      image: "/menu-1.jpg",
+      images: ["/menu-1.jpg", "/menu-2.jpg"]
+    },
     { id: 8, title: "Soil & Sage: E-Commerce", tags: ["Web Design", "Branding"], skillRating: 5, image: "/menu-3.jpg" },
   ]
 
@@ -299,16 +313,29 @@ export default function PortfolioPage() {
                   <DialogTrigger asChild>
                     <div className="w-full h-full flex flex-col">
                       <div className="relative w-full h-3/5 overflow-hidden">
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          className={`w-full h-full object-cover transition-all duration-500 ${project.hoverImage ? "group-hover:opacity-0" : "group-hover:scale-110"}`}
-                        />
-                        {project.hoverImage && (
+                        {project.images ? (
+                          <div onClick={(e) => e.stopPropagation()}>
+                            <Carousel className="w-full h-full">
+                              <CarouselContent className="h-full">
+                                {project.images.map((img, i) => (
+                                  <CarouselItem key={i} className="h-full">
+                                    <img
+                                      src={img}
+                                      alt={`${project.title} - ${i + 1}`}
+                                      className="w-full h-full object-cover"
+                                    />
+                                  </CarouselItem>
+                                ))}
+                              </CarouselContent>
+                              <CarouselPrevious className="left-2" />
+                              <CarouselNext className="right-2" />
+                            </Carousel>
+                          </div>
+                        ) : (
                           <img
-                            src={project.hoverImage}
+                            src={project.image}
                             alt={project.title}
-                            className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
+                            className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
                           />
                         )}
                       </div>
