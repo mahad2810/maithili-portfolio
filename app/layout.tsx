@@ -9,26 +9,13 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 const _playfairDisplay = Playfair_Display({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Video Editor & UI Designer | Creative Portfolio",
+  title: "Maithili Kumar | Video Editor & UI Designer",
   description:
     "A hybrid creator merging cinematic storytelling with interface design. Explore video editing and UI/UX design projects.",
   generator: "v0.app",
   icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
+    icon: "/profile-photo.jpg",
+    apple: "/profile-photo.jpg",
   },
 }
 

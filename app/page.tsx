@@ -1,11 +1,11 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Home, Play, Layers, Mail, Clapperboard, Scissors, PenTool, Rocket, Heart } from "lucide-react"
+import { Home, Play, Layers, Mail, Clapperboard, Scissors, PenTool, Rocket, Heart, X, MousePointer2, Film } from "lucide-react"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTrigger, DialogClose } from "@/components/ui/dialog"
 import {
   Carousel,
   CarouselContent,
@@ -97,16 +97,63 @@ export default function PortfolioPage() {
         }}
       />
 
+      {/* Decorative Elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <motion.div
+          className="absolute top-[15%] left-[5%] w-24 h-24 rounded-full border-2 border-[#903345]/10 hidden md:block"
+          animate={{
+            y: [0, 20, 0],
+            rotate: [0, 10, 0],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-[20%] right-[10%] w-32 h-32 rounded-full border border-[#903345]/10 hidden md:block"
+          animate={{
+            y: [0, -30, 0],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "easeInOut",
+          }}
+        />
+        <svg className="absolute top-[20%] right-[45%] w-12 h-12 text-[#903345]/10 hidden lg:block" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+        </svg>
+      </div>
+
       {/* Main Content */}
       <main className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-12 pb-32">
         {/* Hero Section */}
         <motion.section
-          className="min-h-[90vh] flex items-center"
+          className="min-h-[90vh] flex items-center relative"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
+          {/* Decorative Elements */}
+          <motion.div
+            className="absolute top-0 left-0 md:top-10 md:left-10 text-[#903345]/10 hidden lg:block pointer-events-none"
+            animate={{ y: [0, 20, 0], rotate: [0, 10, 0] }}
+            transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+          >
+            <Film className="w-32 h-32" />
+          </motion.div>
+          <motion.div
+            className="absolute bottom-20 right-[40%] text-[#903345]/10 hidden lg:block pointer-events-none"
+            animate={{ y: [0, -20, 0], rotate: [0, -10, 0] }}
+            transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 1 }}
+          >
+            <MousePointer2 className="w-24 h-24" />
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full relative z-10">
             {/* Left Side */}
             <div className="space-y-8">
               <motion.div
@@ -121,7 +168,7 @@ export default function PortfolioPage() {
                   <span className="text-xl font-medium" style={{ color: "#903345" }}>Maithili Kumar</span>
                 </div>
                 <h1
-                  className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold tracking-tight text-balance leading-[1.1]"
+                  className="text-3xl md:text-6xl lg:text-7xl font-serif font-bold tracking-tight text-balance leading-[1.1]"
                   style={{ color: "#903345" }}
                 >
                   Visual Storyteller & Interface Architect
@@ -195,25 +242,53 @@ export default function PortfolioPage() {
                     loop
                     playsInline
                   />
+                  {/* Decorative Corner */}
+                  <div className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-white/50 rounded-tr-xl" />
+                  <div className="absolute bottom-4 left-4 w-12 h-12 border-b-2 border-l-2 border-white/50 rounded-bl-xl" />
                 </div>
               </div>
             </motion.div>
           </div>
+          
+          {/* Scroll Indicator */}
+          <motion.div 
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, y: [0, 10, 0] }}
+            transition={{ delay: 1.5, duration: 2, repeat: Infinity }}
+          >
+            <span className="text-xs uppercase tracking-widest" style={{ color: "#903345" }}>Scroll</span>
+            <div className="w-px h-12 bg-gradient-to-b from-[#903345] to-transparent" />
+          </motion.div>
         </motion.section>
 
         {/* Video Editing Section */}
         <motion.section
           id="video-work"
-          className="py-24"
+          className="py-24 relative"
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
+          {/* Film Strip Decoration Left */}
+          <div className="absolute -left-4 top-24 bottom-24 w-8 flex flex-col justify-between opacity-10 pointer-events-none hidden xl:flex">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <div key={i} className="w-4 h-6 bg-[#903345] rounded-sm" />
+            ))}
+          </div>
+          {/* Film Strip Decoration Right */}
+          <div className="absolute -right-4 top-24 bottom-24 w-8 flex flex-col justify-between opacity-10 pointer-events-none hidden xl:flex items-end">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <div key={i} className="w-4 h-6 bg-[#903345] rounded-sm" />
+            ))}
+          </div>
+
           <div className="flex items-center gap-3 mb-8 md:mb-12">
             <h2 className="text-3xl md:text-4xl font-serif font-bold tracking-tight" style={{ color: "#903345" }}>
               Video Editing
             </h2>
+            <div className="h-px flex-1 bg-[#903345]/20" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -255,11 +330,19 @@ export default function PortfolioPage() {
                           />
                         </>
                       )}
+                      
+                      {/* Play Button Overlay */}
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/10 backdrop-blur-[2px]">
+                        <div className="w-14 h-14 rounded-full bg-[#903345]/90 flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                          <Play className="w-6 h-6 text-[#FDF1DC] fill-[#FDF1DC] ml-1" />
+                        </div>
+                      </div>
+
                       <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent pointer-events-none">
                         <h3 className="font-bold text-white text-sm mb-1">{project.title}</h3>
                         <div className="flex gap-1">
                           {project.tags.map((tag) => (
-                            <Badge key={tag} variant="secondary" className="bg-white/20 text-white border-white/30 text-xs">
+                            <Badge key={tag} variant="secondary" className="bg-white/20 text-white border-white/30 text-xs backdrop-blur-sm">
                               {tag}
                             </Badge>
                           ))}
@@ -281,19 +364,29 @@ export default function PortfolioPage() {
         {/* UI/UX Design Section */}
         <motion.section
           id="ui-work"
-          className="py-24"
+          className="py-24 relative"
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="flex items-center gap-3 mb-8 md:mb-12">
+          {/* Grid Background Pattern */}
+          <div 
+            className="absolute inset-0 opacity-10 pointer-events-none" 
+            style={{ 
+              backgroundImage: `linear-gradient(#903345 1px, transparent 1px), linear-gradient(90deg, #903345 1px, transparent 1px)`,
+              backgroundSize: '40px 40px'
+            }} 
+          />
+
+          <div className="flex items-center gap-3 mb-8 md:mb-12 relative z-10">
             <h2 className="text-3xl md:text-4xl font-serif font-bold tracking-tight" style={{ color: "#903345" }}>
               UI/UX Design
             </h2>
+            <div className="h-px flex-1 bg-[#903345]/20" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
             {uiProjects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -312,13 +405,13 @@ export default function PortfolioPage() {
                 <Dialog>
                   <DialogTrigger asChild>
                     <div className="w-full h-full flex flex-col">
-                      <div className="relative w-full h-3/5 overflow-hidden">
+                      <div className="relative w-full h-3/5 overflow-hidden bg-gray-100">
                         {project.images ? (
-                          <div onClick={(e) => e.stopPropagation()}>
-                            <Carousel className="w-full h-full">
-                              <CarouselContent className="h-full">
+                          <div className="w-full h-full">
+                            <Carousel opts={{ loop: true }} className="w-full h-full group/carousel">
+                              <CarouselContent className="h-full ml-0">
                                 {project.images.map((img, i) => (
-                                  <CarouselItem key={i} className="h-full">
+                                  <CarouselItem key={i} className="h-full pl-0">
                                     <img
                                       src={img}
                                       alt={`${project.title} - ${i + 1}`}
@@ -327,8 +420,14 @@ export default function PortfolioPage() {
                                   </CarouselItem>
                                 ))}
                               </CarouselContent>
-                              <CarouselPrevious className="left-2" />
-                              <CarouselNext className="right-2" />
+                              <div className="absolute inset-0 flex items-center justify-between px-2 pointer-events-none">
+                                <div className="pointer-events-auto" onClick={(e) => e.stopPropagation()}>
+                                  <CarouselPrevious className="relative left-0 translate-y-0 h-8 w-8 bg-white/80 hover:bg-white text-[#903345] border-none opacity-0 group-hover/carousel:opacity-100 transition-opacity" />
+                                </div>
+                                <div className="pointer-events-auto" onClick={(e) => e.stopPropagation()}>
+                                  <CarouselNext className="relative right-0 translate-y-0 h-8 w-8 bg-white/80 hover:bg-white text-[#903345] border-none opacity-0 group-hover/carousel:opacity-100 transition-opacity" />
+                                </div>
+                              </div>
                             </Carousel>
                           </div>
                         ) : (
@@ -371,7 +470,34 @@ export default function PortfolioPage() {
                     </div>
                   </DialogTrigger>
                   <DialogContent className="max-w-4xl p-0 bg-transparent border-none shadow-none">
-                    <img src={project.image} alt={project.title} className="w-full h-auto max-h-[85vh] object-contain rounded-lg" />
+                    <div className="relative w-full">
+                      <DialogClose className="absolute top-4 right-4 z-50 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors">
+                        <X className="w-5 h-5" />
+                      </DialogClose>
+                      {project.images ? (
+                        <Carousel opts={{ loop: true }} className="w-full max-h-[85vh]">
+                          <CarouselContent>
+                            {project.images.map((img, i) => (
+                              <CarouselItem key={i} className="flex items-center justify-center">
+                                <img
+                                  src={img}
+                                  alt={`${project.title} - ${i + 1}`}
+                                  className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
+                                />
+                              </CarouselItem>
+                            ))}
+                          </CarouselContent>
+                          <CarouselPrevious className="left-4 bg-white/80 hover:bg-white text-[#903345] border-none" />
+                          <CarouselNext className="right-4 bg-white/80 hover:bg-white text-[#903345] border-none" />
+                        </Carousel>
+                      ) : (
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
+                        />
+                      )}
+                    </div>
                   </DialogContent>
                 </Dialog>
               </motion.div>
@@ -509,7 +635,7 @@ export default function PortfolioPage() {
           </motion.div>
 
           <div className="mt-16 pt-8 border-t text-center" style={{ borderColor: "#F3C5D1", color: "#F3C5D1" }}>
-            <p>&copy; 2025 Portfolio. Crafted with precision.</p>
+            <p>&copy; 2025 Maithili Kumar. Crafted with precision.</p>
           </div>
         </div>
       </footer>
@@ -529,6 +655,13 @@ export default function PortfolioPage() {
           }}
         >
           <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3 mr-2">
+              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#F3C5D1]">
+                <img src="/profile-photo.jpg" alt="Maithili" className="w-full h-full object-cover" />
+              </div>
+              <span className="text-[#F3C5D1] font-medium hidden md:block whitespace-nowrap">Maithili Kumar</span>
+            </div>
+            <div className="w-[1px] h-8 bg-[#F3C5D1]/20 mx-1" />
             {[
               { icon: Home, label: "Home", id: "home" },
               { icon: Play, label: "Video Work", id: "video-work" },
