@@ -84,7 +84,7 @@ export default function PortfolioPage() {
       />
 
       {/* Main Content */}
-      <main className="relative z-10 max-w-7xl mx-auto px-6 py-12 pb-32">
+      <main className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-12 pb-32">
         {/* Hero Section */}
         <motion.section
           className="min-h-[90vh] flex items-center"
@@ -92,7 +92,7 @@ export default function PortfolioPage() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
             {/* Left Side */}
             <div className="space-y-8">
               <motion.div
@@ -107,7 +107,7 @@ export default function PortfolioPage() {
                   <span className="text-xl font-medium" style={{ color: "#903345" }}>Maithili Kumar</span>
                 </div>
                 <h1
-                  className="text-6xl lg:text-7xl font-serif font-bold tracking-tight text-balance leading-[1.1]"
+                  className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold tracking-tight text-balance leading-[1.1]"
                   style={{ color: "#903345" }}
                 >
                   Visual Storyteller & Interface Architect
@@ -196,8 +196,8 @@ export default function PortfolioPage() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="flex items-center gap-3 mb-12">
-            <h2 className="text-4xl font-serif font-bold tracking-tight" style={{ color: "#903345" }}>
+          <div className="flex items-center gap-3 mb-8 md:mb-12">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold tracking-tight" style={{ color: "#903345" }}>
               Video Editing
             </h2>
           </div>
@@ -273,8 +273,8 @@ export default function PortfolioPage() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="flex items-center gap-3 mb-12">
-            <h2 className="text-4xl font-serif font-bold tracking-tight" style={{ color: "#903345" }}>
+          <div className="flex items-center gap-3 mb-8 md:mb-12">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold tracking-tight" style={{ color: "#903345" }}>
               UI/UX Design
             </h2>
           </div>
@@ -360,7 +360,7 @@ export default function PortfolioPage() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-serif font-bold tracking-tight mb-16 text-center" style={{ color: "#903345" }}>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold tracking-tight mb-12 md:mb-16 text-center" style={{ color: "#903345" }}>
             The Creative Process
           </h2>
 
@@ -434,7 +434,7 @@ export default function PortfolioPage() {
             viewport={{ once: true }}
           >
             <h2
-              className="text-5xl lg:text-6xl font-serif font-bold tracking-tight text-balance"
+              className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-balance"
               style={{ color: "#F3C5D1" }}
             >
               Let's Talk
