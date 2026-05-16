@@ -19,13 +19,52 @@ export default function PortfolioPage() {
 
   const skills = ["Visual Narratives (Video)", "Interface Design (UI/UX)", "Motion Graphics", "Brand Identity", "Figma", "Canva"]
 
+  const videoCategories = [
+    {
+      id: "product",
+      title: "Product Styling & UGC Videography",
+      description: "This section tells companies you know how to make products look good and can create engaging, brand-ready social media content."
+    },
+    {
+      id: "uiux",
+      title: "UI/UX & Brand Identity",
+      description: "This section highlights your technical design skills, showing you can build functional digital interfaces and cohesive marketing materials."
+    },
+    {
+      id: "cinematic",
+      title: "Cinematic Travel & Cultural Narratives",
+      description: "This section flexes your eye for composition, color grading, and capturing the energy and scale of real-world environments."
+    },
+    {
+      id: "lifestyle",
+      title: "Lifestyle Storytelling & Event Vlogs",
+      description: "Companies love creators who can make everyday events feel dynamic and relatable. This section shows off your editing pacing and personal branding."
+    }
+  ]
+
   const videoProjects = [
-    { id: 1, title: "The Plot: Visual Diary", tags: ["Lifestyle Vlogging", "Color Grading"], featured: true, video: "/video-main.mp4" },
-    { id: 2, title: "Soul of Kashi", tags: ["Travel Cinematography", "Sound Design"], video: "/video-2.mp4" },
-    { id: 3, title: "Campus Chronicles: KGP", tags: ["Short-Form Storytelling", "Documentary"], video: "/video-3.mp4" },
-    { id: 4, title: "Kolkata: The Night Peak", tags: ["Event Videography", "Low Light"], video: "/video-4.mp4" },
-    { id: 5, title: "The Summer Arc: Lab Life", tags: ["Corporate Vlogging", "Pacing"], video: "/video-5.mp4" },
-    { id: 6, title: "Dot & Key: Commercial", tags: ["Product Cinematography", "Motion Text"], video: "/video-ui-ux.mp4" },
+    // Product Styling & UGC
+    { id: 6, category: "product", title: "Dot & Key: Commercial", tags: ["Text Overlays", "Features"], video: "/video-ui-ux.mp4" },
+    { id: 15, category: "product", title: "Commercial Product Styling: Dynamic Elements and Lighting", tags: ["Macro", "Product"], video: "/video-12.mp4" },
+    { id: 14, category: "product", title: "Creative UGC Integration: Relatable Skincare Storytelling", tags: ["UGC", "Skincare"], video: "/video-11.mp4" },
+    { id: 16, category: "product", title: "Minimalist Still Life: Capturing Everyday Serenity", tags: ["Minimalist", "Still Life"], video: "/video-13.mp4" },
+    { id: 13, category: "product", title: "Atmospheric Videography: A Cinematic Coffee Sequence", tags: ["Atmospheric", "Styling"], video: "/video-10.mp4" },
+    
+    // UI/UX & Brand
+    { id: 19, category: "uiux", title: "Digital Menu UI interaction", tags: ["UI Interaction", "Mobile"], video: "/video-1.mp4" },
+
+    // Cinematic & Cultural
+    { id: 2, category: "cinematic", title: "Soul of Kashi: Varanasi Ganga Aarti", tags: ["Cinematic Edit", "Culture"], video: "/video-2.mp4" },
+    { id: 4, category: "cinematic", title: "Kolkata: The Night Peak (Durga Puja)", tags: ["Event Doc", "Low Light"], video: "/video-4.mp4" },
+    { id: 12, category: "cinematic", title: "Cinematic Travel: Finding Serenity at the Banaras Ghats", tags: ["Scenic", "Atmospheric"], video: "/video-9.mp4" },
+    { id: 10, category: "cinematic", title: "Cultural Storytelling: Celebrating the Traditions of Gangaur", tags: ["Narrative", "Culture"], video: "/video-7.mp4" },
+
+    // Lifestyle & Vlogs
+    { id: 3, category: "lifestyle", title: "Campus Chronicles: IIT Kharagpur Trip", tags: ["Campus Vlog", "Event"], video: "/video-3.mp4" },
+    { id: 5, category: "lifestyle", title: "The Summer Arc: Lab Life (Professional Vlog)", tags: ["Day in the life", "Corporate"], video: "/video-5.mp4" },
+    { id: 1, category: "lifestyle", title: "The Plot: Visual Diary (Beach Trip)", tags: ["Fast-paced", "Lifestyle"], featured: true, video: "/video-main.mp4" },
+    { id: 9, category: "lifestyle", title: "Personal Narrative: Navigating Independence and Social Dynamics", tags: ["Relatable", "Narrative"], video: "/video-6.mp4" },
+    { id: 11, category: "lifestyle", title: "Lifestyle Montage: Embracing the Everyday Journey", tags: ["Casual", "Campus"], video: "/video-8.mp4" },
   ]
 
   const uiProjects = [
@@ -38,6 +77,25 @@ export default function PortfolioPage() {
       images: ["/menu-1.jpg", "/menu-2.jpg"]
     },
     { id: 8, title: "Soil & Sage: E-Commerce", tags: ["Web Design", "Branding"], skillRating: 5, image: "/menu-3.jpg" },
+  ]
+
+  const brandProjects = [
+    {
+      id: 17,
+      title: "Brand Storytelling: \"Your Digital Guardian\" Product Brochure",
+      tags: ["Brochure Design", "Product Narrative"],
+      image: "/brochure-thumbnail.png",
+      pdf: "/setuka-brochure.pdf",
+      description: "Condensing complex technical features like offline networks and AI safety scores into an engaging, consumer-friendly narrative."
+    },
+    {
+      id: 18,
+      title: "Corporate Merchandise: Field Station \"Adventure Log\" Apparel",
+      tags: ["Merchandise", "Brand Extension"],
+      image: "/tshirt-thumbnail.png",
+      pdf: "/mk-tshirt.pdf",
+      description: "Extending a brand’s visual identity into tangible assets, showing a cohesive aesthetic between digital brochures and physical gear."
+    }
   ]
 
   const processSteps = [
@@ -291,72 +349,85 @@ export default function PortfolioPage() {
             <div className="h-px flex-1 bg-[#903345]/20" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {videoProjects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                className="group relative rounded-[30px] overflow-hidden hover:shadow-xl transition-all aspect-video cursor-pointer"
-                style={{
-                  backgroundColor: "#FDF1DC",
-                  border: "2px solid #903345",
-                  boxShadow: "0 8px 20px rgba(144, 51, 69, 0.08)",
-                }}
-                whileHover={{ y: -6 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <div className="w-full h-full relative">
-                      {project.video ? (
-                        <>
-                          <video
-                            src={project.video}
-                            className="w-full h-full object-cover"
-                            muted
-                            loop
-                            autoPlay
-                            playsInline
-                          />
-                        </>
-                      ) : (
-                        <>
-                          <img
-                          src={`/.jpg?height=400&width=600&query=${project.title.toLowerCase().replace(/\s+/g, "+")}`}
-                          alt={project.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                        </>
-                      )}
-                      
-                      {/* Play Button Overlay */}
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/10 backdrop-blur-[2px]">
-                        <div className="w-14 h-14 rounded-full bg-[#903345]/90 flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-300">
-                          <Play className="w-6 h-6 text-[#FDF1DC] fill-[#FDF1DC] ml-1" />
-                        </div>
-                      </div>
+          <div className="space-y-16">
+            {videoCategories.map((category) => (
+              <div key={category.id} className="space-y-6">
+                <div className="max-w-2xl">
+                  <h3 className="text-2xl font-bold mb-2" style={{ color: "#903345" }}>{category.title}</h3>
+                  <p className="text-[#903345]/70 text-sm">{category.description}</p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {videoProjects
+                    .filter((project) => project.category === category.id)
+                    .map((project, index) => (
+                      <motion.div
+                        key={project.id}
+                        className="group relative rounded-[30px] overflow-hidden hover:shadow-xl transition-all aspect-video cursor-pointer"
+                        style={{
+                          backgroundColor: "#FDF1DC",
+                          border: "2px solid #903345",
+                          boxShadow: "0 8px 20px rgba(144, 51, 69, 0.08)",
+                        }}
+                        whileHover={{ y: -6 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                      >
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <div className="w-full h-full relative">
+                              {project.video ? (
+                                <>
+                                  <video
+                                    src={project.video}
+                                    className="w-full h-full object-cover"
+                                    muted
+                                    loop
+                                    autoPlay
+                                    playsInline
+                                  />
+                                </>
+                              ) : (
+                                <>
+                                  <img
+                                  src={`/.jpg?height=400&width=600&query=${project.title.toLowerCase().replace(/\s+/g, "+")}`}
+                                  alt={project.title}
+                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                  />
+                                </>
+                              )}
+                              
+                              {/* Play Button Overlay */}
+                              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/10 backdrop-blur-[2px]">
+                                <div className="w-14 h-14 rounded-full bg-[#903345]/90 flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                  <Play className="w-6 h-6 text-[#FDF1DC] fill-[#FDF1DC] ml-1" />
+                                </div>
+                              </div>
 
-                      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent pointer-events-none">
-                        <h3 className="font-bold text-white text-sm mb-1">{project.title}</h3>
-                        <div className="flex gap-1">
-                          {project.tags.map((tag) => (
-                            <Badge key={tag} variant="secondary" className="bg-white/20 text-white border-white/30 text-xs backdrop-blur-sm">
-                              {tag}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-5xl p-0 bg-black border-none">
-                    {project.video && (
-                      <video src={project.video} className="w-full h-auto max-h-[80vh]" controls autoPlay />
-                    )}
-                  </DialogContent>
-                </Dialog>
-              </motion.div>
+                              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent pointer-events-none">
+                                <h3 className="font-bold text-white text-sm mb-1">{project.title}</h3>
+                                <div className="flex gap-1">
+                                  {project.tags.map((tag) => (
+                                    <Badge key={tag} variant="secondary" className="bg-white/20 text-white border-white/30 text-xs backdrop-blur-sm">
+                                      {tag}
+                                    </Badge>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-5xl p-0 bg-black border-none">
+                            {project.video && (
+                              <video src={project.video} className="w-full h-auto max-h-[80vh]" controls autoPlay />
+                            )}
+                          </DialogContent>
+                        </Dialog>
+                      </motion.div>
+                    ))}
+                </div>
+              </div>
             ))}
           </div>
         </motion.section>
@@ -499,6 +570,80 @@ export default function PortfolioPage() {
                       )}
                     </div>
                   </DialogContent>
+                </Dialog>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* Brand Identity & Marketing Collateral Section */}
+        <motion.section
+          id="brand-work"
+          className="py-24 relative"
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          {/* Decorative Pattern */}
+          <div className="absolute top-0 right-0 w-64 h-64 opacity-5 pointer-events-none">
+             <Layers className="w-full h-full text-[#903345]" />
+          </div>
+
+          <div className="flex items-center gap-3 mb-8 md:mb-12">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold tracking-tight" style={{ color: "#903345" }}>
+              Brand Identity & Marketing Collateral
+            </h2>
+            <div className="h-px flex-1 bg-[#903345]/20" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {brandProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                className="group relative rounded-[30px] overflow-hidden hover:shadow-xl transition-all cursor-pointer"
+                style={{
+                  backgroundColor: "#FDF1DC",
+                  border: "2px solid #903345",
+                  boxShadow: "0 8px 20px rgba(144, 51, 69, 0.08)",
+                }}
+                whileHover={{ y: -6 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Dialog>
+                   <DialogTrigger asChild>
+                     <div className="flex flex-col md:flex-row h-full">
+                        <div className="w-full md:w-1/2 aspect-video md:aspect-auto overflow-hidden bg-white/50">
+                           <img 
+                             src={project.image} 
+                             alt={project.title} 
+                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                           />
+                        </div>
+                        <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
+                           <h3 className="text-xl font-bold mb-3" style={{ color: "#903345" }}>{project.title}</h3>
+                           <div className="flex gap-2 mb-4">
+                              {project.tags.map(tag => (
+                                <Badge key={tag} variant="outline" className="text-[10px]" style={{ borderColor: "#903345", color: "#903345" }}>{tag}</Badge>
+                              ))}
+                           </div>
+                           <p className="text-[#903345]/80 text-xs leading-relaxed mb-6">
+                              {project.description}
+                           </p>
+                           <Button 
+                             variant="outline" 
+                             size="sm"
+                             className="w-fit rounded-full text-xs" 
+                             style={{ borderColor: "#903345", color: "#903345" }}
+                           >
+                             View Document
+                           </Button>
+                        </div>
+                     </div>
+                   </DialogTrigger>
+                   <DialogContent className="max-w-5xl h-[90vh] p-0 bg-white overflow-hidden">
+                      <iframe src={project.pdf} className="w-full h-full border-none" title={project.title} />
+                   </DialogContent>
                 </Dialog>
               </motion.div>
             ))}
@@ -666,6 +811,7 @@ export default function PortfolioPage() {
               { icon: Home, label: "Home", id: "home" },
               { icon: Play, label: "Video Work", id: "video-work" },
               { icon: Layers, label: "UI Work", id: "ui-work" },
+              { icon: PenTool, label: "Brand Identity", id: "brand-work" },
               { icon: Mail, label: "Contact", id: "contact" },
             ].map((item) => (
               <motion.button
