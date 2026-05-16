@@ -23,32 +23,31 @@ export default function PortfolioPage() {
     {
       id: "product",
       title: "Product Styling & UGC Videography",
-      description: "This section tells companies you know how to make products look good and can create engaging, brand-ready social media content."
+      description: "I specialize in making products stand out through high-end styling and engaging User-Generated Content (UGC) tailored for brand storytelling."
     },
     {
       id: "uiux",
       title: "UI/UX & Brand Identity",
-      description: "This section highlights your technical design skills, showing you can build functional digital interfaces and cohesive marketing materials."
+      description: "I design intuitive digital interfaces and cohesive brand identities, ensuring a seamless connection between functionality and aesthetics."
     },
     {
       id: "cinematic",
       title: "Cinematic Travel & Cultural Narratives",
-      description: "This section flexes your eye for composition, color grading, and capturing the energy and scale of real-world environments."
+      description: "I capture the essence of diverse cultures and landscapes, using cinematic techniques and color grading to tell immersive travel stories."
     },
     {
       id: "lifestyle",
       title: "Lifestyle Storytelling & Event Vlogs",
-      description: "Companies love creators who can make everyday events feel dynamic and relatable. This section shows off your editing pacing and personal branding."
+      description: "I transform everyday moments and events into dynamic visual narratives, focusing on rhythmic pacing and authentic personal branding."
     }
   ]
 
   const videoProjects = [
     // Product Styling & UGC
-    { id: 6, category: "product", title: "Dot & Key: Commercial", tags: ["Text Overlays", "Features"], video: "/video-ui-ux.mp4" },
-    { id: 15, category: "product", title: "Commercial Product Styling: Dynamic Elements and Lighting", tags: ["Macro", "Product"], video: "/video-12.mp4" },
+    { id: 20, category: "product", title: "Creative Product Showcase: Dynamic Lighting & Styling", tags: ["Styling", "Product"], video: "/video-product-merged.mp4" },
     { id: 14, category: "product", title: "Creative UGC Integration: Relatable Skincare Storytelling", tags: ["UGC", "Skincare"], video: "/video-11.mp4" },
     { id: 16, category: "product", title: "Minimalist Still Life: Capturing Everyday Serenity", tags: ["Minimalist", "Still Life"], video: "/video-13.mp4" },
-    { id: 13, category: "product", title: "Atmospheric Videography: A Cinematic Coffee Sequence", tags: ["Atmospheric", "Styling"], video: "/video-10.mp4" },
+    { id: 13, category: "product", title: "Atmospheric Videography: A Cinematic Coffee Sequence", tags: ["Atmospheric", "Styling"], video: "/video-coffee-new.mp4" },
     
     // UI/UX & Brand
     { id: 19, category: "uiux", title: "Digital Menu UI interaction", tags: ["UI Interaction", "Mobile"], video: "/video-1.mp4" },
@@ -86,7 +85,7 @@ export default function PortfolioPage() {
       tags: ["Brochure Design", "Product Narrative"],
       image: "/brochure-thumbnail.png",
       pdf: "/setuka-brochure.pdf",
-      description: "Condensing complex technical features like offline networks and AI safety scores into an engaging, consumer-friendly narrative."
+      description: "I condensed complex technical features—like offline networks and AI safety scores—into an engaging, consumer-friendly product narrative."
     },
     {
       id: 18,
@@ -94,7 +93,7 @@ export default function PortfolioPage() {
       tags: ["Merchandise", "Brand Extension"],
       image: "/tshirt-thumbnail.png",
       pdf: "/mk-tshirt.pdf",
-      description: "Extending a brand’s visual identity into tangible assets, showing a cohesive aesthetic between digital brochures and physical gear."
+      description: "I extended the brand’s visual identity into tangible assets, ensuring a cohesive aesthetic between digital collateral and physical team gear."
     }
   ]
 
@@ -240,7 +239,7 @@ export default function PortfolioPage() {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
               >
-                A hybrid creator merging cinematic storytelling with interface design. Making brands move and interfaces
+                I merge cinematic storytelling with interface design, making brands move and interfaces
                 sing.
               </motion.p>
 
@@ -293,12 +292,14 @@ export default function PortfolioPage() {
                   }}
                 >
                   <video
+                    key="/hero-video.mp4"
                     src="/hero-video.mp4"
                     className="w-full aspect-video object-cover"
                     autoPlay
                     muted
                     loop
                     playsInline
+                    preload="metadata"
                   />
                   {/* Decorative Corner */}
                   <div className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-white/50 rounded-tr-xl" />
@@ -381,12 +382,14 @@ export default function PortfolioPage() {
                               {project.video ? (
                                 <>
                                   <video
+                                    key={project.video}
                                     src={project.video}
                                     className="w-full h-full object-cover"
                                     muted
                                     loop
                                     autoPlay
                                     playsInline
+                                    preload="metadata"
                                   />
                                 </>
                               ) : (
