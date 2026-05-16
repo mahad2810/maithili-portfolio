@@ -38,7 +38,7 @@ export default function PortfolioPage() {
     {
       id: "lifestyle",
       title: "Lifestyle Storytelling & Event Vlogs",
-      description: "I transform everyday moments and events into dynamic visual narratives, focusing on rhythmic pacing and authentic personal branding."
+      description: "I transform everyday moments and events into dynamic visual narratives, focusing on rhythmic pacing and authentic personal branding. Every frame in this section was captured and edited by me, reflecting my commitment to high-quality, personal storytelling."
     }
   ]
 
